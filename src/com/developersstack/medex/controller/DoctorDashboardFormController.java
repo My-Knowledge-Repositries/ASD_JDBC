@@ -30,7 +30,7 @@ public class DoctorDashboardFormController {
     public void initialize() throws IOException {
 //         checkUser();
         initializeData();
-        checkDoctorData();
+       // checkDoctorData();
     }
 
     private void initializeData() throws IOException {
