@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="659.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.developersstack.medex.controller.MakePrescriptionFormController">
+   <children>
+      <Label layoutX="29.0" layoutY="14.0" text="Make Prescription" textFill="#ff4d00">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="46.0" prefHeight="1.0" prefWidth="871.0" />
+      <Label layoutX="29.0" layoutY="60.0" text="Patient Details">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="151.0" text="Appoinment Details">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="197.0" text="Full Name">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="244.0" text="Address">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXTextArea labelFloat="true" layoutX="31.0" layoutY="288.0" prefHeight="229.0" prefWidth="885.0" promptText="Note">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton buttonType="RAISED" layoutX="766.0" layoutY="543.0" style="-fx-background-color: #0D99FF;" text="Submit Data" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="18.0" layoutY="610.0" text="From:  Developers Stack" />
+      <Label layoutX="842.0" layoutY="610.0" text="Version: 1.0.0" />
+   </children>
+</AnchorPane>

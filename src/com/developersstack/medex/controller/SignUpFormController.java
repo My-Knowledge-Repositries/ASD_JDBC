@@ -1,6 +1,5 @@
 package com.developersstack.medex.controller;
 
-import com.developersstack.medex.db.Database;
 import com.developersstack.medex.dto.User;
 import com.developersstack.medex.enums.AccountType;
 import com.jfoenix.controls.JFXPasswordField;
@@ -18,7 +17,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Optional;
 
 public class SignUpFormController {
     public AnchorPane signUpContext;
@@ -30,25 +28,6 @@ public class SignUpFormController {
 
     public void signUpOnAction(ActionEvent actionEvent) throws IOException {
         String email = txtEmail.getText().trim().toLowerCase();
-        //first method
-        /*for (UserDto dto:Database.userTable){
-            if (dto.getEmail().equals(email.trim().toLowerCase())) {
-                new Alert(Alert.AlertType.WARNING, "Email is already exists!").show();
-                return;
-            }
-        }*/
-
-        /*Second Method*/
-        Optional<User> selectedUser = Database.userTable.stream().filter(e -> e.getEmail().equals(email)).findFirst();
-        if (selectedUser.isPresent()) {
-            new Alert(Alert.AlertType.WARNING, "Email is already exists!").show();
-            return;
-        }
-//        Database.userTable.add(
-//
-//        );
-        new Alert(Alert.AlertType.CONFIRMATION, "Welcome").show();
-        setUi();
         // driver load =>
         User user = new User(txtFirstName.getText(), txtLastName.getText(), email, txtPassword.getText(), rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT);
         try {
@@ -69,10 +48,10 @@ public class SignUpFormController {
             pstm.setString(6, user.getAccountType().name());
 
             int isSaved = pstm.executeUpdate();
-            if (isSaved>0){
-                new Alert(Alert.AlertType.CONFIRMATION,"Saved").show();
-            }else{
-                new Alert(Alert.AlertType.WARNING,"Try Again").show();
+            if (isSaved > 0) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Try Again").show();
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

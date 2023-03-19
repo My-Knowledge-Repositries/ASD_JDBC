@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="372.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.developersstack.medex.controller.PatientDashboardFormController">
+   <children>
+      <Label layoutX="24.0" layoutY="24.0" text="Patient Dashboard" textFill="#ff6600">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="62.0" prefHeight="0.0" prefWidth="902.0" />
+      <Label fx:id="lblDate" layoutX="293.0" layoutY="24.0" text="2022-10-12">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" layoutX="422.0" layoutY="24.0" text="08:10:12">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Separator layoutX="406.0" layoutY="24.0" orientation="VERTICAL" prefHeight="28.0" prefWidth="1.0" />
+      <JFXButton buttonType="RAISED" layoutX="801.0" layoutY="19.0" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #012E6A;" text="Log Out" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="57.0" layoutY="112.0" onAction="#navigateToPatientManagementForm" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: #012E6A;" text="Appoinments" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="383.0" layoutY="112.0" prefHeight="56.0" prefWidth="149.0" style="-fx-background-color: #A94DC1;" text="Doctors" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="648.0" layoutY="112.0" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: #14AE5C;" text="Prescriptions" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="158.0" layoutY="213.0" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: #1abc9c;" text="Health Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="37.0" fitWidth="44.0" layoutX="740.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lblDate1" layoutX="604.0" layoutY="25.0" prefHeight="28.0" prefWidth="120.0" text="User Name">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="559.0" layoutY="213.0" prefHeight="56.0" prefWidth="159.0" style="-fx-background-color: #5f27cd;" text="Payments" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="39.0" layoutY="327.0" text="From:  Developers Stack" />
+      <Label layoutX="801.0" layoutY="327.0" text="Version: 1.0.0" />
+   </children>
+</AnchorPane>
