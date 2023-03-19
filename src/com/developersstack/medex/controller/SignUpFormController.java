@@ -2,6 +2,8 @@ package com.developersstack.medex.controller;
 
 import com.developersstack.medex.dto.User;
 import com.developersstack.medex.enums.AccountType;
+import com.developersstack.medex.util.IdGenerator;
+import com.developersstack.medex.util.PasswordConfig;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
@@ -29,7 +31,7 @@ public class SignUpFormController {
     public void signUpOnAction(ActionEvent actionEvent) throws IOException {
         String email = txtEmail.getText().trim().toLowerCase();
         // driver load =>
-        User user = new User(txtFirstName.getText(), txtLastName.getText(), email, txtPassword.getText(), rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT);
+        User user = new User(txtFirstName.getText(), txtLastName.getText(), email, new PasswordConfig().encrypt(txtPassword.getText()), rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(
@@ -40,7 +42,7 @@ public class SignUpFormController {
             String sql = "INSERT INTO user VALUES (?,?,?,?,?,?)";
 
             PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setInt(1, 1001);
+            pstm.setInt(1, new IdGenerator().generateId());
             pstm.setString(2, user.getFirstName());
             pstm.setString(3, user.getLastName());
             pstm.setString(4, user.getEmail());
@@ -50,6 +52,7 @@ public class SignUpFormController {
             int isSaved = pstm.executeUpdate();
             if (isSaved > 0) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved").show();
+                setUi();
             } else {
                 new Alert(Alert.AlertType.WARNING, "Try Again").show();
             }
