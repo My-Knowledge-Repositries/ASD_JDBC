@@ -5,6 +5,7 @@ import com.developersstack.medex.db.DbConnection;
 import com.developersstack.medex.dto.User;
 import com.developersstack.medex.enums.AccountType;
 import com.developersstack.medex.util.Cookie;
+import com.developersstack.medex.util.CrudUtil;
 import com.developersstack.medex.util.PasswordConfig;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
@@ -31,21 +32,19 @@ public class LoginFormController {
         AccountType accountType = rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT;
 
         try{
-            String sql = "SELECT * FROM user WHERE email=? AND account_type=?";
-            PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
-            pstm.setString(1, email);
-            pstm.setString(2, accountType.name());
-            ResultSet rst = pstm.executeQuery();
-            if (rst.next()){
-                if(new PasswordConfig().decrypt(password, rst.getString("password"))){
+            ResultSet resultSet = CrudUtil.executeQuery("SELECT * FROM user WHERE email=? AND account_type=?",
+                    email,accountType.name());
+            if (resultSet.next()){
+                if (new PasswordConfig().decrypt(password,resultSet.getString("password"))){
                     if (accountType.equals(AccountType.DOCTOR)){
                         setUi("DoctorDashboardForm");
                     }else{
                         setUi("PatientDashboardForm");
                     }
                 }
-            }else {
-                new Alert(Alert.AlertType.WARNING, String.format("we can't find an email (%s)", email)).show();
+            }else{
+                new Alert(Alert.AlertType.WARNING,
+                        String.format("we can't find an email (%s)",email)).show();
             }
         }catch (SQLException | ClassNotFoundException e){
             e.printStackTrace();
