@@ -1,6 +1,7 @@
 package com.developersstack.medex.controller;
 
 import com.developersstack.medex.db.Database;
+import com.developersstack.medex.db.DbConnection;
 import com.developersstack.medex.dto.User;
 import com.developersstack.medex.enums.AccountType;
 import com.developersstack.medex.util.Cookie;
@@ -30,14 +31,8 @@ public class LoginFormController {
         AccountType accountType = rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT;
 
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/medex",
-                    "root",
-                    "1234"
-            );
             String sql = "SELECT * FROM user WHERE email=? AND account_type=?";
-            PreparedStatement pstm = connection.prepareStatement(sql);
+            PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
             pstm.setString(1, email);
             pstm.setString(2, accountType.name());
             ResultSet rst = pstm.executeQuery();
