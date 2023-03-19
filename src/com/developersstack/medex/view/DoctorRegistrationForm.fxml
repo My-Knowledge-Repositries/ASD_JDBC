@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="doctorRegistrationContext" prefHeight="551.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.developersstack.medex.controller.DoctorRegistrationFormController">
+   <children>
+      <Label layoutX="14.0" layoutY="9.0" text="Doctor Dashboard" textFill="#ff2b00">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtFirstName" editable="false" labelFloat="true" layoutX="14.0" layoutY="52.0" prefHeight="31.0" prefWidth="213.0" promptText="First Name" />
+      <JFXTextField fx:id="txtLastName" editable="false" labelFloat="true" layoutX="243.0" layoutY="52.0" prefHeight="31.0" prefWidth="262.0" promptText="Last Name" />
+      <JFXTextField fx:id="txtNic" labelFloat="true" layoutX="526.0" layoutY="52.0" prefHeight="31.0" prefWidth="296.0" promptText="NIC" />
+      <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="15.0" layoutY="100.0" prefHeight="31.0" prefWidth="327.0" promptText="Email" />
+      <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="385.0" layoutY="100.0" prefHeight="31.0" prefWidth="316.0" promptText="Contact" />
+      <JFXTextField fx:id="txtSpecializations" labelFloat="true" layoutX="14.0" layoutY="159.0" prefHeight="31.0" prefWidth="253.0" promptText="Specializations" />
+      <JFXRadioButton fx:id="rBtnMale" layoutX="297.0" layoutY="164.0" selected="true" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="Gender" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton layoutX="379.0" layoutY="164.0" text="Female" toggleGroup="$Gender" />
+      <JFXButton buttonType="RAISED" layoutX="710.0" layoutY="460.0" onAction="#submitDataOnAction" style="-fx-background-color: #1099FF;" text="Submit Data" textFill="#f8f8f8" />
+      <JFXTextArea fx:id="txtAddress" labelFloat="true" layoutX="14.0" layoutY="209.0" prefHeight="229.0" prefWidth="811.0" promptText="address" />
+      <Separator layoutX="14.0" layoutY="40.0" prefHeight="1.0" prefWidth="811.0" />
+      <Label layoutX="29.0" layoutY="507.0" text="From:  Developers Stack" />
+      <Label layoutX="734.0" layoutY="507.0" text="Version: 1.0.0" />
+   </children>
+</AnchorPane>

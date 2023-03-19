@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="485.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.developersstack.medex.controller.NewAppointmentFormController">
+   <children>
+      <Label layoutX="22.0" layoutY="19.0" text="New Appoinment" textFill="#ff5900">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="48.0" prefHeight="6.0" prefWidth="961.0" />
+      <JFXTextField labelFloat="true" layoutX="13.0" layoutY="64.0" prefHeight="31.0" prefWidth="230.0" promptText="Doctor">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="274.0" layoutY="64.0" prefHeight="31.0" prefWidth="230.0" promptText="Date">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="532.0" layoutY="64.0" prefHeight="31.0" prefWidth="230.0" promptText="Time">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField labelFloat="true" layoutX="13.0" layoutY="138.0" prefHeight="31.0" prefWidth="230.0" promptText="Amount">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextArea labelFloat="true" layoutX="13.0" layoutY="213.0" prefHeight="151.0" prefWidth="880.0" promptText="Message">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton buttonType="RAISED" layoutX="788.0" layoutY="64.0" style="-fx-background-color: #1099FF;" text="See Avaliability" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="387.0" style="-fx-background-color: #CE3DF3;" text="Make The Appointment" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="22.0" layoutY="442.0" text="From: Developer Stack" />
+      <Label layoutX="849.0" layoutY="442.0" text="Version: 1.0.0" />
+   </children>
+</AnchorPane>

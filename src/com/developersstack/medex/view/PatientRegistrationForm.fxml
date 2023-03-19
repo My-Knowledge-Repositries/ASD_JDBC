@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="532.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.developersstack.medex.controller.PatientRegistrationFormController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Patient Registration" textFill="#ff5e00">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="40.0" prefHeight="2.0" prefWidth="672.0" />
+      <JFXTextField labelFloat="true" layoutX="14.0" layoutY="57.0" prefHeight="31.0" prefWidth="209.0" promptText="First Name" />
+      <JFXTextField layoutX="239.0" layoutY="57.0" prefHeight="31.0" prefWidth="209.0" promptText="Last Name" />
+      <JFXTextField labelFloat="true" layoutX="466.0" layoutY="57.0" prefHeight="31.0" prefWidth="209.0" promptText="NIC" />
+      <JFXTextField layoutX="13.0" layoutY="114.0" prefHeight="31.0" prefWidth="283.0" promptText="Email" />
+      <JFXTextField layoutX="317.0" layoutY="114.0" prefHeight="31.0" prefWidth="209.0" promptText="DOB" />
+      <JFXRadioButton layoutX="535.0" layoutY="119.0" text="Male" />
+      <JFXRadioButton layoutX="619.0" layoutY="119.0" text="Female" />
+      <JFXButton buttonType="RAISED" layoutX="558.0" layoutY="415.0" style="-fx-background-color: #1099FF;" text="Submit Data" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXTextArea layoutX="14.0" layoutY="158.0" />
+   </children>
+</AnchorPane>
