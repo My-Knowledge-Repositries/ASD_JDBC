@@ -1,6 +1,5 @@
 package com.developersstack.medex.controller;
 
-import com.developersstack.medex.db.DbConnection;
 import com.developersstack.medex.dto.User;
 import com.developersstack.medex.enums.AccountType;
 import com.developersstack.medex.util.CrudUtil;
@@ -17,9 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class SignUpFormController {
@@ -35,7 +31,7 @@ public class SignUpFormController {
         // driver load =>
         User user = new User(txtFirstName.getText(), txtLastName.getText(), email, new PasswordConfig().encrypt(txtPassword.getText()), rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT);
         try {
-            boolean isSaved = CrudUtil.executeUpdate(
+            boolean isSaved = CrudUtil.execute(
                     "INSERT INTO user VALUES (?,?,?,?,?,?)",
                     new IdGenerator().generateId(),
                     user.getFirstName(),
