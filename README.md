@@ -1,2 +1,2 @@
 # ASD_JDBC
-Learning jdbc from Advanced Spring Program.
+JDBC Lessons above the Advanced Spring Development Program.
