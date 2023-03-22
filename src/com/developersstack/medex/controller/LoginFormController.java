@@ -1,7 +1,5 @@
 package com.developersstack.medex.controller;
 
-import com.developersstack.medex.db.Database;
-import com.developersstack.medex.db.DbConnection;
 import com.developersstack.medex.dto.User;
 import com.developersstack.medex.enums.AccountType;
 import com.developersstack.medex.util.Cookie;
@@ -18,7 +16,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginFormController {
     public JFXTextField txtEmail;
@@ -31,22 +30,43 @@ public class LoginFormController {
         String password = txtPassword.getText();
         AccountType accountType = rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT;
 
-        try{
+        try {
             ResultSet resultSet = CrudUtil.execute("SELECT * FROM user WHERE email=? AND account_type=?",
-                    email,accountType.name());
-            if (resultSet.next()){
-                if (new PasswordConfig().decrypt(password,resultSet.getString("password"))){
-                    if (accountType.equals(AccountType.DOCTOR)){
-                        setUi("DoctorDashboardForm");
-                    }else{
-                        setUi("PatientDashboardForm");
+                    email, accountType.name());
+            if (resultSet.next()) {
+
+                Cookie.selectedUser = new User(
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),
+                        resultSet.getString("email"),
+                        "",
+                        accountType
+                );
+
+                if (new PasswordConfig().decrypt(password, resultSet.getString("password"))) {
+                    if (accountType.equals(AccountType.PATIENT)) {
+                        ResultSet selectedPatientResult =
+                                CrudUtil.execute("SELECT patient_id FROM patient WHERE email=?", email);
+                        if (selectedPatientResult.next()) {
+                            setUi("PatientDashboardForm");
+                        } else {
+                            setUi("PatientRegistrationForm");
+                        }
+                    } else {
+                        ResultSet selectedDoctorResult =
+                                CrudUtil.execute("SELECT doctor_id FROM doctor WHERE email=?", email);
+                        if (selectedDoctorResult.next()) {
+                            setUi("DoctorDashboardForm");
+                        } else {
+                            setUi("DoctorRegistrationForm");
+                        }
                     }
                 }
-            }else{
+            } else {
                 new Alert(Alert.AlertType.WARNING,
-                        String.format("we can't find an email (%s)",email)).show();
+                        String.format("we can't find an email (%s)", email)).show();
             }
-        }catch (SQLException | ClassNotFoundException e){
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -58,8 +78,8 @@ public class LoginFormController {
     }
 
     private void setUi(String location) throws IOException {
-        Stage stage =(Stage) loginContext.getScene().getWindow();
+        Stage stage = (Stage) loginContext.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.
-                load(getClass().getResource("../view/"+location+".fxml"))));
+                load(getClass().getResource("../view/" + location + ".fxml"))));
     }
 }
