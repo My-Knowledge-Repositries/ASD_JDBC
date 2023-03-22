@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="485.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.developersstack.medex.controller.NewAppointmentFormController">
+<AnchorPane fx:id="newAppointmentContext" prefHeight="485.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.developersstack.medex.controller.NewAppointmentFormController">
    <children>
       <Label layoutX="22.0" layoutY="19.0" text="New Appoinment" textFill="#ff5900">
          <font>
@@ -18,32 +20,17 @@
          </font>
       </Label>
       <Separator layoutX="14.0" layoutY="48.0" prefHeight="6.0" prefWidth="961.0" />
-      <JFXTextField labelFloat="true" layoutX="13.0" layoutY="64.0" prefHeight="31.0" prefWidth="230.0" promptText="Doctor">
+      <JFXTextField fx:id="txtAmount" labelFloat="true" layoutX="22.0" layoutY="138.0" prefHeight="31.0" prefWidth="320.0" promptText="Amount">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField labelFloat="true" layoutX="274.0" layoutY="64.0" prefHeight="31.0" prefWidth="230.0" promptText="Date">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField labelFloat="true" layoutX="532.0" layoutY="64.0" prefHeight="31.0" prefWidth="230.0" promptText="Time">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField labelFloat="true" layoutX="13.0" layoutY="138.0" prefHeight="31.0" prefWidth="230.0" promptText="Amount">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextArea labelFloat="true" layoutX="13.0" layoutY="213.0" prefHeight="151.0" prefWidth="880.0" promptText="Message">
+      <JFXTextArea fx:id="txtMessage" labelFloat="true" layoutX="22.0" layoutY="208.0" prefHeight="151.0" prefWidth="880.0" promptText="Message">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXTextArea>
-      <JFXButton buttonType="RAISED" layoutX="788.0" layoutY="64.0" style="-fx-background-color: #1099FF;" text="See Avaliability" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="788.0" layoutY="64.0" onAction="#seeAvailabilityOnAction" style="-fx-background-color: #1099FF;" text="See Avaliability" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -51,7 +38,7 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="387.0" style="-fx-background-color: #CE3DF3;" text="Make The Appointment" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="387.0" onAction="#makeTheAppointmentOnAction" style="-fx-background-color: #CE3DF3;" text="Make The Appointment" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -61,5 +48,16 @@
       </JFXButton>
       <Label layoutX="22.0" layoutY="442.0" text="From: Developer Stack" />
       <Label layoutX="849.0" layoutY="442.0" text="Version: 1.0.0" />
+      <JFXButton buttonType="RAISED" layoutX="813.0" layoutY="7.0" onAction="#backToHomeOnAction" style="-fx-background-color: #1099FF;" text="Back To Home" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="cmbDoctor" labelFloat="true" layoutX="22.0" layoutY="68.0" prefHeight="31.0" prefWidth="205.0" promptText="Doctor Name" />
+      <JFXDatePicker fx:id="txtDate" layoutX="262.0" layoutY="68.0" overLay="true" prefHeight="31.0" prefWidth="214.0" promptText="Date" />
+      <JFXTimePicker fx:id="txtTime" layoutX="511.0" layoutY="68.0" overLay="true" prefHeight="31.0" prefWidth="230.0" promptText="Time" />
    </children>
 </AnchorPane>
