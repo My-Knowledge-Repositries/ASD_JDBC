@@ -1,7 +1,5 @@
 package com.developersstack.medex.controller;
 
-import com.developersstack.medex.db.Database;
-import com.developersstack.medex.dto.DoctorDto;
 import com.developersstack.medex.dto.User;
 import com.developersstack.medex.enums.GenderType;
 import com.developersstack.medex.util.Cookie;
@@ -57,18 +55,17 @@ public class DoctorRegistrationFormController {
 
 
     public void submitDataOnAction(ActionEvent actionEvent) {
-
         try {
             String docId = generateDoctorId();
             boolean isSaved = CrudUtil.execute("INSERT INTO doctor VALUES(?,?,?,?,?,?,?,?)",
                     docId,
-                    txtFirstName.getText(),txtLastName.getText(),
-                    txtContact.getText(),txtEmail.getText(),
+                    txtFirstName.getText(), txtLastName.getText(),
+                    txtContact.getText(), txtEmail.getText(),
                     txtSpecializations.getText(),
                     txtAddress.getText(),
-                    rBtnMale.isSelected()?GenderType.MALE.name():GenderType.FE_MALE.name()
+                    rBtnMale.isSelected() ? GenderType.MALE.name() : GenderType.FE_MALE.name()
             );
-            if (isSaved){
+            if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Welcome Doctor...").show();
                 setUi("DoctorDashboardForm");
             }
@@ -76,6 +73,7 @@ public class DoctorRegistrationFormController {
             e.printStackTrace();
         }
     }
+
     private void setUi(String location) throws IOException {
         Stage stage = (Stage) doctorRegistrationContext.getScene().getWindow();
         System.out.println(stage);
