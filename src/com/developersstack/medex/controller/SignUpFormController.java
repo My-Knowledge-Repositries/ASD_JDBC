@@ -27,24 +27,24 @@ public class SignUpFormController {
     public JFXRadioButton rBtnDoctor;
 
     public void signUpOnAction(ActionEvent actionEvent) throws IOException {
-        String email = txtEmail.getText().trim().toLowerCase();
-        // driver load =>
-        User user = new User(txtFirstName.getText(), txtLastName.getText(), email, new PasswordConfig().encrypt(txtPassword.getText()), rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT);
+        User user = new User(txtFirstName.getText(),
+                txtLastName.getText(),
+                txtEmail.getText().trim().toLowerCase(),
+                new PasswordConfig().encrypt(txtPassword.getText()),
+                rBtnDoctor.isSelected() ? AccountType.DOCTOR : AccountType.PATIENT);
+
         try {
+            String id = new IdGenerator().generateId("SELECT user_id FROM user ORDER BY user_id DESC 1","U");
             boolean isSaved = CrudUtil.execute(
-                    "INSERT INTO user VALUES (?,?,?,?,?,?)",
-                    new IdGenerator().generateId(),
-                    user.getFirstName(),
-                    user.getLastName(),
-                    user.getEmail(),
-                    user.getPassword(),
-                    user.getAccountType().name()
+                    "INSERT INTO user VALUES (?,?,?,?,?,?)",id
+                    ,user.getFirstName(),user.getLastName(),user.getEmail(),
+                    user.getPassword(),user.getAccountType().name()
             );
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved").show();
+            if (isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved!").show();
                 setUi();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Try Again").show();
+            }else {
+                new Alert(Alert.AlertType.WARNING, "Try Again!").show();
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

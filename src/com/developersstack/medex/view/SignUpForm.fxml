@@ -34,13 +34,10 @@
             <Font name="System Bold" size="19.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="" />
-         </toggleGroup>
-      </JFXRadioButton>
-      <JFXRadioButton layoutX="634.0" layoutY="264.0" text="Patient">
-         <toggleGroup>
             <ToggleGroup fx:id="accountType" />
          </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton layoutX="634.0" layoutY="264.0" text="Patient" toggleGroup="$accountType">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>

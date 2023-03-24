@@ -7,17 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class IdGenerator {
-    public int generateId() {
-        try {
-            String sql = "SELECT user_id FROM user ORDER BY user_id DESC LIMIT 1";
-            PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
-            ResultSet rst = pstm.executeQuery();
-            if (rst.next()) {
-                return rst.getInt(1) + 1;
+    public String generateId(String sql, String prefix){
+        try{
+            ResultSet rst = CrudUtil.execute(sql);
+            if (rst.next()){
+                String tempId =  rst.getString(1);
+                int id= Integer.parseInt(tempId.split("-")[1]); // -->
+                id++;
+                return prefix+"-"+id;
             }
-            return 1;
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
         }
+        return prefix+"-1";
     }
 }
